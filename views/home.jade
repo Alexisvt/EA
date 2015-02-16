@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Home page
+    script(type="text/javascript", src="/js/angular.min.js")
+    script.
+
+      var myData = {
+      name: "Adam",
+      weather: "sunny",
+      printMessages: function () {
+      console.log("Hello " + this.name + ". ");
+      console.log("Today is " + this.weather + ".");
+      }
+      };
+      var myExtendedObject = {
+      city: "London"
+      };
+      angular.extend(myExtendedObject, myData);
+      console.log(myExtendedObject.name);
+      console.log(myExtendedObject.city);
+  body
+    h1 First test
