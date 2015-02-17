@@ -1,0 +1,17 @@
+extends layout/layoutBase
+
+block title
+ | Example Store AngularJs App
+
+block customScripts
+  script(type="text/javascript", src="/js/app.js")
+
+block content
+  div(id="mainWrapdiv", ng-controller="exampleAppCtrl")
+    div(class="navbar navbar-inverse")
+      a(href="#", class="navbar-brand") Example Store AngularJs App
+    div(class="panel panel-default row")
+      .col-xs-3
+        | Categories go here
+      .col-xs-8
+        | Products go here
