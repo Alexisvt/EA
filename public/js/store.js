@@ -1,1 +1,1 @@
-angular.module("storeApp",[]);
+angular.module("storeApp",["customFilters"]);
