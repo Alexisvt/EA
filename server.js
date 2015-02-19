@@ -9,7 +9,7 @@ var server = express();
 
 //Setting other config for the server
 server.set('view engine', 'jade');
-server.set('port', process.env.PORT || 3000);
+server.set('port', process.env.PORT || 3333);
 server.set('view cache', true);
 
 //Middlewares
