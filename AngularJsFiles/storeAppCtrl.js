@@ -1,4 +1,4 @@
-angular.module("storeApp").controller("storeAppCtrl", function ($scope) {
+module.exports = angular.module("storeApp").controller("storeAppCtrl", function ($scope) {
   $scope.data = {
     products: [
       { name: "Product #1", description: "A product", category: "Category #1", price: 100 },

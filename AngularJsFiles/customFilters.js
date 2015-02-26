@@ -1,4 +1,4 @@
-angular.module("customFilters", [])
+module.exports = angular.module("customFilters", [])
   .filter("unique", function () {
     return function (data, propertyName) {
       if (angular.isArray(data) && angular.isString(propertyName)){
