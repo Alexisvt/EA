@@ -1,3 +1,4 @@
+// var angular = require('angular');
 require('angular');
 
 var storeAppCtrl = require('./storeAppCtrl.js');
