@@ -1,5 +1,5 @@
 module.exports = angular.module("storeApp")
-  .controller("productListCtrl", function () {
+.controller("productListCtrl", function ($scope, $filter) {
 
   var selectedCategory = null;
 

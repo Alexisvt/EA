@@ -1,5 +1,7 @@
 var $ = require('jquery');
+
 var angular = require('angular');
+
 
 angular.module("storeApp", ["customFilters"]);
 
