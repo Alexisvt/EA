@@ -1,19 +1,42 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\productListCtrl.js":[function(require,module,exports){
-module.exports = angular.module("storeApp")
-.controller("productListCtrl", function ($scope, $filter) {
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\productListCtrl.js":[function(require,module,exports){
+"use strict";
+
+var productListCtrl = function ($scope, $filter, productListActiveClass) {
 
   var selectedCategory = null;
 
+  $scope.selectedPage = 1;
+  $scope.pageSize = productListPageCount;
+
   $scope.selectCategory = function (newCategory) {
     selectedCategory = newCategory;
+    $scope.selectedPage = 1;
+  };
+
+  $scope.selectPage = function (newPage) {
+    $scope.selectedPage = newPage;
   };
 
   $scope.categoryFilterFn = function (product) {
     return selectedCategory == null || product.category == selectedCategory;
   };
-});
 
-},{}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\store.js":[function(require,module,exports){
+  $scope.getCategoryClass = function (category) {
+    return selectedCategory == category ? productListActiveClass : "";
+  };
+
+  $scope.getPageClass = function (page) {
+    return $scope.selectedPage == page ? productListActiveClass : "";
+  }
+
+};
+
+module.exports = angular.module("storeApp")
+  .constant("productListActiveClass", "btn-primary")
+  .constant("productListPageCount", 3)
+  .controller("productListCtrl", productListCtrl,productListPageCount);
+
+},{}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\store.js":[function(require,module,exports){
 var $ = require('jquery');
 
 var angular = require('angular');
@@ -25,7 +48,7 @@ require('./storeAppCtrl');
 require('./uniqueFltr');
 require('./productListCtrl');
 
-},{"./productListCtrl":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\productListCtrl.js","./storeAppCtrl":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\storeAppCtrl.js","./uniqueFltr":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\uniqueFltr.js","angular":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\angular\\index.js","jquery":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\jquery\\dist\\jquery.js"}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\storeAppCtrl.js":[function(require,module,exports){
+},{"./productListCtrl":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\productListCtrl.js","./storeAppCtrl":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\storeAppCtrl.js","./uniqueFltr":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\uniqueFltr.js","angular":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\angular\\index.js","jquery":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\jquery\\dist\\jquery.js"}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\storeAppCtrl.js":[function(require,module,exports){
 module.exports = angular.module("storeApp").controller("storeAppCtrl", function ($scope) {
   $scope.data = {
     products: [
@@ -37,7 +60,7 @@ module.exports = angular.module("storeApp").controller("storeAppCtrl", function 
   };
 });
 
-},{}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\uniqueFltr.js":[function(require,module,exports){
+},{}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\uniqueFltr.js":[function(require,module,exports){
 module.exports = angular.module("customFilters", [])
   .filter("unique", function () {
     return function (data, propertyName) {
@@ -59,7 +82,7 @@ module.exports = angular.module("customFilters", [])
     };
 });
 
-},{}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\angular\\angular.js":[function(require,module,exports){
+},{}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\angular\\angular.js":[function(require,module,exports){
 /**
  * @license AngularJS v1.3.14
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -26241,11 +26264,11 @@ var minlengthDirective = function() {
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
-},{}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\angular\\index.js":[function(require,module,exports){
+},{}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\angular\\index.js":[function(require,module,exports){
 require('./angular');
 module.exports = angular;
 
-},{"./angular":"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\angular\\angular.js"}],"C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\node_modules\\jquery\\dist\\jquery.js":[function(require,module,exports){
+},{"./angular":"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\angular\\angular.js"}],"C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\node_modules\\jquery\\dist\\jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -35452,4 +35475,4 @@ return jQuery;
 
 }));
 
-},{}]},{},["C:\\Users\\Alexis\\Documents\\LearningCenter\\ExpressAngularJs\\AngularJsFiles\\store.js"]);
+},{}]},{},["C:\\Users\\OSI-7\\Documents\\Test Enviroments\\ExpressAndAngularJs\\AngularJsFiles\\store.js"]);
